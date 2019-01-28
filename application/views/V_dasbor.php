@@ -13,7 +13,6 @@
         }
         .main {
             background:white;
-            /* width:900px; */
             margin-top:10px;
             padding:20px;
             border-top:5px solid #dc3545;

@@ -13,7 +13,6 @@
         }
         .main {
             background:white;
-            /* width:900px; */
             margin-top:10px;
             padding:20px;
             border-top:5px solid #dc3545;
@@ -25,6 +24,7 @@
 <body>
     <div class="main mx-auto container">
         <span id='time'></span>
+        <h3><?php echo $title?></h3>
     </div>
     <script src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
