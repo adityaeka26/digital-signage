@@ -22,30 +22,9 @@
         }
     </style>
 </head>
-<body onload="display_ct()">
+<body>
     <div class="main mx-auto container">
         <span id='time'></span>
-        <h3>Daftar Config</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nama Config</th>
-                    <th>Tanggal Mulai</th>
-                    <th>Tanggal Selesai</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($config->result_array() as $config_arr) { ?>
-                    <tr>
-                        <td><?php echo $config_arr["nama_config"]?></td>
-                        <td><?php echo $config_arr["tanggal_mulai"]?></td>
-                        <td><?php echo $config_arr["tanggal_selesai"]?></td>
-                    </tr>
-                <?php }?>
-            </tbody>
-        </table>
-        <a class="btn btn-danger" href="">Tambah Config</a>
-        <a class="btn btn-danger" href="<?php echo base_url()?>dosen/logout">Logout</a>
     </div>
     <script src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
@@ -85,4 +64,3 @@
         }
     </script>
 </body>
-</html>
