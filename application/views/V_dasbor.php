@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo $title?></title>
+    <title><?= $title?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url()?>assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url()?>assets/css/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<?= base_url()?>assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<?= base_url()?>assets/css/datatables.min.css" />
     <style>
         body {
             background:#eee;
@@ -36,19 +36,19 @@
             <tbody>
                 <?php foreach ($config->result_array() as $config_arr) { ?>
                     <tr>
-                        <td><?php echo $config_arr["nama_config"]?></td>
-                        <td><?php echo $config_arr["tanggal_mulai"]?></td>
-                        <td><?php echo $config_arr["tanggal_selesai"]?></td>
+                        <td><?= $config_arr["nama_config"]?></td>
+                        <td><?= $config_arr["tanggal_mulai"]?></td>
+                        <td><?= $config_arr["tanggal_selesai"]?></td>
                     </tr>
-                <?php }?>
+                <?php } ?>
             </tbody>
         </table>
         <a class="btn btn-danger" href="">Tambah Config</a>
-        <a class="btn btn-danger" href="<?php echo base_url()?>dosen/logout">Logout</a>
+        <a class="btn btn-danger" href="<?= base_url()?>dosen/logout">Logout</a>
     </div>
-    <script src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/datatables.min.js"></script>
+    <script src="<?= base_url()?>assets/js/jquery-3.3.1.min.js"></script>
+    <script src="<?= base_url()?>assets/js/bootstrap.min.js"></script>
+    <script src="<?= base_url()?>assets/js/datatables.min.js"></script>
     <script type="text/javascript"> 
         function display_c(){
             var refresh=1000;
@@ -76,10 +76,11 @@
             }
             var minute = now.getMinutes();
             var hour = now.getHours();
+            var second = now.getSeconds();
             document.getElementById("time").innerHTML = 
                 day + ", " + 
                 date + "/" + month + "/" + year + " " + 
-                hour + ":" + minute;
+                hour + ":" + minute + ":" + second;
             tt = display_c();
         }
     </script>
