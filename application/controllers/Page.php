@@ -33,9 +33,10 @@ class Page extends CI_Controller {
             redirect("page/login");
         } else {
             $nama_config = $this->M_digitalsignage->get_config_name($kode_config)->result_array()[0]["nama_config"];
-            $data["title"] = "Config ".$nama_config;
+            $data["title"] = "Kegiatan ".$nama_config;
             $kode_dosen = $this->session->userdata("username");
             $data["config"] = $this->M_digitalsignage->get_all_config($kode_dosen);
+            $data["kegiatan"] = $this->M_digitalsignage->get_kegiatan($kode_config);
             $this->load->view("V_config", $data);
         } 
     }

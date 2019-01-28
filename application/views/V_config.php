@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?= $title?></title>
+    <title><?=$title?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="<?= base_url()?>assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="<?= base_url()?>assets/css/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url()?>assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url()?>assets/css/datatables.min.css" />
     <style>
         body {
             background:#eee;
@@ -24,11 +24,36 @@
 <body>
     <div class="main mx-auto container">
         <span id='time'></span>
-        <h3><?= $title?></h3>
+        <h3><?=$title?></h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nama Kegiatan</th>
+                    <th>Hari</th>
+                    <th>Jam Mulai</th>
+                    <th>Jam Selesai</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($kegiatan->result_array() as $kegiatan_arr) { ?>
+                    <tr>
+                        <td><?=$kegiatan_arr["nama_kegiatan"]?></td>
+                        <td><?=$kegiatan_arr["nama_hari"]?></td>
+                        <td><?=$kegiatan_arr["jam_mulai"]?></td>
+                        <td><?=$kegiatan_arr["jam_selesai"]?></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Hapus</button>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
-    <script src="<?= base_url()?>assets/js/jquery-3.3.1.min.js"></script>
-    <script src="<?= base_url()?>assets/js/bootstrap.min.js"></script>
-    <script src="<?= base_url()?>assets/js/datatables.min.js"></script>
+    <script src="<?=base_url()?>assets/js/jquery-3.3.1.min.js"></script>
+    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+    <script src="<?=base_url()?>assets/js/datatables.min.js"></script>
     <script type="text/javascript"> 
         function display_c(){
             var refresh=1000;
