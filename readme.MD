@@ -6,6 +6,6 @@ A digital signage project for every lecturer's room in School of Computing Telko
 
 Demo
 ----
-http://adityaeka.com/digital-signage _
-Username: adr _
-Password: adr _
+http://adityaeka.com/digital-signage
+Username: adr
+Password: adr
