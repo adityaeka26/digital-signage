@@ -14,17 +14,35 @@
         .main {
             background:white;
             margin-top:10px;
-            padding:20px;
+            padding:30px;
             border-top:5px solid #dc3545;
             border-bottom:10px solid #dc3545;
             box-shadow:0px 0px 10px #1234;
+            overflow:hidden;
+        }
+        h3.title {
+            margin:20px 0px;
+        }
+        .top-menu {
+            margin-bottom:15px;
+        }
+        .bottom-menu {
+            float:right;
+        }
+        .not-active {
+            display:none;
         }
     </style>
 </head>
 <body onload="display_ct()">
     <div class="main mx-auto container">
-        <span id="time"></span>
+        <div class="alert alert-success">
+            <center><span id="time"></span></center>
+        </div>
         <h3 class="title"><?=$title?></h3>
+        <div class="top-menu">
+            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#tambah-kegiatan">Tambah Kegiatan</button>
+        </div>
         <table class="table" id="kegiatan">
             <thead>
                 <tr>
@@ -50,10 +68,124 @@
                 <?php } ?>
             </tbody>
         </table>
+        <div class="bottom-menu">
+            <a class="btn btn-danger" href="<?=base_url()?>">Dasbor</a>
+            <a class="btn btn-danger" href="<?=base_url()?>dosen/logout">Logout</a>
+        </div>
+    </div>
+    <div class="modal fade" id="tambah-kegiatan" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <form action="<?=base_url()?>dosen/insert_kegiatan" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tambah Kegiatan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Kode Config</label>
+                            <input type="text" class="form-control" name="kode_config" readonly value="<?=$kode_config?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Kegiatan</label>
+                            <select class="form-control" name="nama_kegiatan" required>
+                                <option value="1">Mengajar</option>
+                                <option value="2">Rapat</option>
+                                <option value="3">Bimbingan Mahasiswa</option>
+                                <option value="4">Responsi</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Hari</label>
+                            <select class="form-control" name="hari" required>
+                                <option value="h1">Senin</option>
+                                <option value="h2">Selasa</option>
+                                <option value="h3">Rabu</option>
+                                <option value="h4">Kamis</option>
+                                <option value="h5">Jumat</option>
+                                <option value="h6">Sabtu</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Jam Mulai</label>
+                            <select class="form-control mulai" name="jam_mulai" required>
+                                <option value="jm01" class="op-mulai" id="1">06:30</option>
+                                <option value="jm02" class="op-mulai" id="2">07:00</option>
+                                <option value="jm03" class="op-mulai" id="3">07:30</option>
+                                <option value="jm04" class="op-mulai" id="4">08:00</option>
+                                <option value="jm05" class="op-mulai" id="5">08:30</option>
+                                <option value="jm06" class="op-mulai" id="6">09:00</option>
+                                <option value="jm07" class="op-mulai" id="7">09:30</option>
+                                <option value="jm08" class="op-mulai" id="8">10:00</option>
+                                <option value="jm09" class="op-mulai" id="9">10:30</option>
+                                <option value="jm10" class="op-mulai" id="10">11:00</option>
+                                <option value="jm11" class="op-mulai" id="11">11:30</option>
+                                <option value="jm12" class="op-mulai" id="12">12:00</option>
+                                <option value="jm13" class="op-mulai" id="13">12:30</option>
+                                <option value="jm14" class="op-mulai" id="14">13:00</option>
+                                <option value="jm15" class="op-mulai" id="15">13:30</option>
+                                <option value="jm16" class="op-mulai" id="16">14:00</option>
+                                <option value="jm17" class="op-mulai" id="17">14:30</option>
+                                <option value="jm18" class="op-mulai" id="18">15:00</option>
+                                <option value="jm19" class="op-mulai" id="19">15:30</option>
+                                <option value="jm20" class="op-mulai" id="20">16:00</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Jam Selesai</label>
+                            <select class="form-control selesai" name="jam_selesai" required>
+                                <option value="js02" class="op-selesai" id="2">07:00</option>
+                                <option value="js03" class="op-selesai" id="3">07:30</option>
+                                <option value="js04" class="op-selesai" id="4">08:00</option>
+                                <option value="js05" class="op-selesai" id="5">08:30</option>
+                                <option value="js06" class="op-selesai" id="6">09:00</option>
+                                <option value="js07" class="op-selesai" id="7">09:30</option>
+                                <option value="js08" class="op-selesai" id="8">10:00</option>
+                                <option value="js09" class="op-selesai" id="9">10:30</option>
+                                <option value="js10" class="op-selesai" id="10">11:00</option>
+                                <option value="js11" class="op-selesai" id="11">11:30</option>
+                                <option value="js12" class="op-selesai" id="12">12:00</option>
+                                <option value="js13" class="op-selesai" id="13">12:30</option>
+                                <option value="js14" class="op-selesai" id="14">13:00</option>
+                                <option value="js15" class="op-selesai" id="15">13:30</option>
+                                <option value="js16" class="op-selesai" id="16">14:00</option>
+                                <option value="js17" class="op-selesai" id="17">14:30</option>
+                                <option value="js18" class="op-selesai" id="18">15:00</option>
+                                <option value="js19" class="op-selesai" id="19">15:30</option>
+                                <option value="js20" class="op-selesai" id="20">16:00</option>
+                                <option value="js21" class="op-selesai" id="21">16:30</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-danger" value="Tambah">
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
     <script src="<?=base_url()?>assets/js/jquery-3.3.1.min.js"></script>
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>assets/js/datatables.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $(".mulai").on("change", function() {
+                var id = $(this).children(":selected").attr("id");
+                $(".op-selesai").addClass("not-active");
+                $('.selesai > option').each(function() {
+                    if (parseInt($(this).attr("id")) > parseInt(id)) {
+                        $(this).removeClass("not-active");
+                    }
+                    if (parseInt($(this).attr("id"))-1 == parseInt(id)) {
+                        $(this).prop('selected', true);
+                    }
+                });
+            });
+        });
+    </script>
     <script type="text/javascript"> 
         function display_c(){
             var refresh=1000;

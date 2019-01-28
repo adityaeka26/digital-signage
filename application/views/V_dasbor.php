@@ -11,20 +11,38 @@
         body {
             background:#eee;
         }
+        a:hover {
+            text-decoration:none;
+        }
         .main {
             background:white;
             margin-top:10px;
-            padding:20px;
+            padding:30px;
             border-top:5px solid #dc3545;
             border-bottom:10px solid #dc3545;
             box-shadow:0px 0px 10px #1234;
+            overflow:hidden;
+        }
+        h3.title {
+            margin:20px 0px;
+        }
+        .top-menu {
+            margin-bottom:15px;
+        }
+        .bottom-menu {
+            float:right;
         }
     </style>
 </head>
 <body onload="display_ct()">
     <div class="main mx-auto container">
-        <span id="time"></span>
+        <div class="alert alert-success">
+            <center><span id="time"></span></center>
+        </div>
         <h3 class="title">Daftar Config</h3>
+        <div class="top-menu">
+            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#tambah-kegiatan">Tambah Config</button>
+        </div>  
         <table class="table" id="kegiatan">
             <thead>
                 <tr>
@@ -43,8 +61,29 @@
                 <?php } ?>
             </tbody>
         </table>
-        <a class="btn btn-danger" href="">Tambah Config</a>
-        <a class="btn btn-danger" href="<?=base_url()?>dosen/logout">Logout</a>
+        <div class="bottom-menu">
+            <a class="btn btn-danger" href="<?=base_url()?>">Dasbor</a>
+            <a class="btn btn-danger" href="<?=base_url()?>dosen/logout">Logout</a>
+        </div>
+    </div>
+    <div class="modal fade" id="tambah-kegiatan" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="<?=base_url()?>assets/js/jquery-3.3.1.min.js"></script>
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>

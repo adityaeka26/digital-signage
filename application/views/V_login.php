@@ -28,11 +28,6 @@
 <body>
     <div class="mx-auto content">
         <form action="<?=base_url()?>dosen/login" method="post">
-            <?php if ($this->session->flashdata("notification")) {?>
-                <div class="alert alert-danger" role="alert">
-                    <?=$this->session->flashdata("notification")?>
-                </div>
-            <?php } ?>
             <center><h2>Login</h2></center>
             <div class="form-group">
                 <label>Username</label>
@@ -42,6 +37,11 @@
                 <label>Password</label>
                 <input type="password" class="form-control" placeholder="******" name="password">
             </div>
+            <?php if ($this->session->flashdata("notification")) {?>
+                <div class="alert alert-danger" role="alert">
+                    <?=$this->session->flashdata("notification")?>
+                </div>
+            <?php } ?>
             <input class="btn btn-danger btn-login" type="submit" value="Login">
         </form>
     </div>

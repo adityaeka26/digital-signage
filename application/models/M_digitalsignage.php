@@ -25,4 +25,12 @@ class M_digitalsignage extends CI_Model {
             WHERE kode_config=$kode_config
         ");
     }
+    public function insert_kegiatan($kode_dosen, $kode_config, $kegiatan, $hari, $jam_mulai, $jam_selesai) {
+        $this->db->query("INSERT INTO kegiatan_dosen (kode_dosen, kode_kegiatan) VALUES ('$kode_dosen', $kegiatan)");
+        $kode_kegiatan_dosen = $this->db->insert_id();
+        $this->db->query("INSERT INTO kegiatan_dosen_hari (kode_kegiatan_dosen, kode_hari) VALUES ($kode_kegiatan_dosen, '$hari')");
+        $this->db->query("INSERT INTO kegiatan_dosen_jam_mulai (kode_kegiatan_dosen, kode_jam_mulai) VALUES ($kode_kegiatan_dosen, '$jam_mulai')");
+        $this->db->query("INSERT INTO kegiatan_dosen_jam_selesai (kode_kegiatan_dosen, kode_jam_selesai) VALUES ($kode_kegiatan_dosen, '$jam_selesai')");
+        $this->db->query("INSERT INTO config_dosen (kode_kegiatan_dosen, kode_config) VALUES ($kode_kegiatan_dosen, $kode_config)");
+    }
 }

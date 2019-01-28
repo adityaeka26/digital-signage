@@ -36,8 +36,9 @@ class Page extends CI_Controller {
             $data["title"] = "Kegiatan ".$nama_config;
             $kode_dosen = $this->session->userdata("username");
             $data["config"] = $this->M_digitalsignage->get_all_config($kode_dosen);
+            $data["kode_config"] = $kode_config;
             $data["kegiatan"] = $this->M_digitalsignage->get_kegiatan($kode_config);
             $this->load->view("V_config", $data);
-        } 
+        }
     }
 }

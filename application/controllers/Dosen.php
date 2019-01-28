@@ -23,4 +23,15 @@ class Dosen extends CI_Controller {
         $this->session->unset_userdata("username");
         redirect("page/login");
     }
+    public function insert_kegiatan() {
+        $kode_dosen = $this->session->userdata("username");
+        $kode_config = $this->input->post("kode_config");
+        $kegiatan = $this->input->post("nama_kegiatan");
+        $hari = $this->input->post("hari");
+        $jam_mulai = $this->input->post("jam_mulai");
+        $jam_selesai = $this->input->post("jam_selesai");
+
+        $this->M_digitalsignage->insert_kegiatan($kode_dosen, $kode_config, $kegiatan, $hari, $jam_mulai, $jam_selesai);
+        redirect("page/config/".$kode_config);
+    }
 }
