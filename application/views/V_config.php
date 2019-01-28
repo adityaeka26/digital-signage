@@ -21,11 +21,11 @@
         }
     </style>
 </head>
-<body>
+<body onload="display_ct()">
     <div class="main mx-auto container">
-        <span id='time'></span>
-        <h3><?=$title?></h3>
-        <table class="table">
+        <span id="time"></span>
+        <h3 class="title"><?=$title?></h3>
+        <table class="table" id="kegiatan">
             <thead>
                 <tr>
                     <th>Nama Kegiatan</th>
@@ -43,8 +43,8 @@
                         <td><?=$kegiatan_arr["jam_mulai"]?></td>
                         <td><?=$kegiatan_arr["jam_selesai"]?></td>
                         <td>
-                            <button>Edit</button>
-                            <button>Hapus</button>
+                            <button class="btn btn-sm btn-primary">Edit</button>
+                            <button class="btn btn-sm btn-danger">Hapus</button>
                         </td>
                     </tr>
                 <?php } ?>
@@ -81,10 +81,11 @@
             }
             var minute = now.getMinutes();
             var hour = now.getHours();
+            var second = now.getSeconds();
             document.getElementById("time").innerHTML = 
                 day + ", " + 
                 date + "/" + month + "/" + year + " " + 
-                hour + ":" + minute;
+                hour + ":" + minute + ":" + second;
             tt = display_c();
         }
     </script>

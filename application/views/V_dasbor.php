@@ -23,9 +23,9 @@
 </head>
 <body onload="display_ct()">
     <div class="main mx-auto container">
-        <span id='time'></span>
-        <h3>Daftar Config</h3>
-        <table class="table">
+        <span id="time"></span>
+        <h3 class="title">Daftar Config</h3>
+        <table class="table" id="kegiatan">
             <thead>
                 <tr>
                     <th>Nama Config</th>
