@@ -36,4 +36,9 @@ class Dosen extends CI_Controller {
         $this->session->set_flashdata("notification", "Kegiatan ".$nama_kegiatan." berhasil ditambahkan!");
         redirect("page/config/".$kode_config);
     }
+    public function delete_kegiatan($kode_config, $kode_kegiatan_dosen) {
+        $this->M_digitalsignage->delete_kegiatan($kode_kegiatan_dosen);
+        $this->session->set_flashdata("notification", "Kegiatan berhasil dihapus!");
+        redirect("page/config/".$kode_config);
+    }
 }

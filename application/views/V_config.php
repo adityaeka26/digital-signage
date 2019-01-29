@@ -85,7 +85,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <a class="btn btn-danger" href="#">Hapus</a>
+                        <a class="btn btn-danger" href="<?=base_url()?>dosen/delete_kegiatan/<?=$kode_config?>/<?=$kegiatan_arr["kode_kegiatan_dosen"]?>">Hapus</a>
                     </div>
                 </div>
             </div>
