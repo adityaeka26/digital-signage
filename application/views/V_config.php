@@ -11,8 +11,8 @@
 </head>
 <body onload="display_ct()">
     <div class="main mx-auto container">
-        <div class="alert alert-success">
-            <center><span id="time"></span></center>
+        <div class="time">
+            <span id="time"></span>
         </div>
         <h3 class="title"><?=$title?></h3>
         <div class="top-menu">
@@ -69,6 +69,7 @@
             </div>
         </div>
     <?php } ?>
+    <!-- End -->
     <!-- Modal Hapus Kegiatan -->
     <?php foreach ($kegiatan->result_array() as $kegiatan_arr) { ?>
         <div class="modal fade" id="hapus-kegiatan<?=$kegiatan_arr["kode_kegiatan_dosen"]?>" tabindex="-1" role="dialog">
@@ -91,6 +92,7 @@
             </div>
         </div>
     <?php } ?>
+    <!-- End -->
     <!-- Modal Tambah Kegiatan -->
     <div class="modal fade" id="tambah-kegiatan" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -186,6 +188,7 @@
             </form>
         </div>
     </div>
+    <!-- End -->
     <script src="<?=base_url()?>assets/js/jquery-3.3.1.min.js"></script>
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>assets/js/datatables.min.js"></script>
@@ -195,12 +198,14 @@
             $('#notifikasi').modal('show');
         });
     </script>
+    <!-- End -->
     <!-- JS Datatables Kegiatan -->
     <script type="text/javascript">
         $(document).ready( function () {
             $('#kegiatan').DataTable();
         });
     </script>
+    <!-- End -->
     <!-- JS Input Jam Mulai & Selesai -->
     <script type="text/javascript">
         $(function() {
@@ -218,6 +223,7 @@
             });
         });
     </script>
+    <!-- End -->
     <!-- JS Tanggal & Waktu -->
     <script type="text/javascript"> 
         function display_c(){
@@ -254,4 +260,5 @@
             tt = display_c();
         }
     </script>
+    <!-- End -->
 </body>

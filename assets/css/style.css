@@ -24,3 +24,9 @@ h3.title {
 .not-active {
     display:none;
 }
+.time {
+    float:right;
+}
+#time {
+    float:right;
+}

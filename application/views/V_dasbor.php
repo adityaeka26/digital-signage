@@ -11,8 +11,8 @@
 </head>
 <body onload="display_ct()">
     <div class="main mx-auto container">
-        <div class="alert alert-success">
-            <center><span id="time"></span></center>
+        <div class="time">
+            <span id="time"></span>
         </div>
         <h3 class="title">Daftar Config</h3>
         <div class="top-menu">
