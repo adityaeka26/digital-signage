@@ -7,32 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url()?>assets/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url()?>assets/css/datatables.min.css" />
-    <style>
-        body {
-            background:#eee;
-        }
-        a:hover {
-            text-decoration:none;
-        }
-        .main {
-            background:white;
-            margin-top:10px;
-            padding:30px;
-            border-top:5px solid #dc3545;
-            border-bottom:10px solid #dc3545;
-            box-shadow:0px 0px 10px #1234;
-            overflow:hidden;
-        }
-        h3.title {
-            margin:20px 0px;
-        }
-        .top-menu {
-            margin-bottom:15px;
-        }
-        .bottom-menu {
-            float:right;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url()?>assets/css/style.css" />
 </head>
 <body onload="display_ct()">
     <div class="main mx-auto container">
@@ -43,7 +18,7 @@
         <div class="top-menu">
             <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#tambah-kegiatan">Tambah Config</button>
         </div>  
-        <table class="table" id="kegiatan">
+        <table class="table" id="config">
             <thead>
                 <tr>
                     <th>Nama Config</th>
@@ -85,9 +60,43 @@
             </div>
         </div>
     </div>
+    <!-- Modal Notifikasi -->
+    <?php if ($this->session->flashdata("notification")) { ?>
+        <div class="modal fade" id="notifikasi" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Notifikasi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?=$this->session->flashdata("notification")?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
     <script src="<?=base_url()?>assets/js/jquery-3.3.1.min.js"></script>
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>assets/js/datatables.min.js"></script>
+    <!-- JS Modal Notifikasi -->
+    <script type="text/javascript">
+        $(window).on('load',function(){
+            $('#notifikasi').modal('show');
+        });
+    </script>
+    <!-- JS Datatables Kegiatan -->
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#config').DataTable();
+        });
+    </script>
+    <!-- JS Tanggal & Waktu -->
     <script type="text/javascript"> 
         function display_c(){
             var refresh=1000;

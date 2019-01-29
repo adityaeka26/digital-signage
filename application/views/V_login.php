@@ -31,22 +31,44 @@
             <center><h2>Login</h2></center>
             <div class="form-group">
                 <label>Username</label>
-                <input type="text" class="form-control" placeholder="adityaeka26" name="username">
+                <input required type="text" class="form-control" placeholder="adityaeka26" name="username">
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control" placeholder="******" name="password">
+                <input required type="password" class="form-control" placeholder="******" name="password">
             </div>
-            <?php if ($this->session->flashdata("notification")) {?>
-                <div class="alert alert-danger" role="alert">
-                    <?=$this->session->flashdata("notification")?>
-                </div>
-            <?php } ?>
             <input class="btn btn-danger btn-login" type="submit" value="Login">
         </form>
     </div>
+    <!-- Modal Notifikasi -->
+    <?php if ($this->session->flashdata("notification")) { ?>
+        <div class="modal fade" id="notifikasi" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Notifikasi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?=$this->session->flashdata("notification")?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
     <script src="<?=base_url()?>assets/js/jquery-3.3.1.min.js"></script>
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>assets/js/datatables.min.js"></script>
+    <!-- JS Modal Notifikasi -->
+    <script type="text/javascript">
+        $(window).on('load',function(){
+            $('#notifikasi').modal('show');
+        });
+    </script>
 </body>
 </html>

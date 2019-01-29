@@ -12,7 +12,7 @@ class M_digitalsignage extends CI_Model {
         return $this->db->query("SELECT nama_config FROM config WHERE kode_config=$kode_config");
     }
     public function get_kegiatan($kode_config) {
-        return $this->db->query("SELECT nama_kegiatan, nama_hari, jam_mulai, jam_selesai
+        return $this->db->query("SELECT kode_kegiatan_dosen, nama_kegiatan, nama_hari, jam_mulai, jam_selesai
             FROM config_dosen 
             INNER JOIN kegiatan_dosen USING (kode_kegiatan_dosen)
             INNER JOIN kegiatan USING (kode_kegiatan)
@@ -32,5 +32,8 @@ class M_digitalsignage extends CI_Model {
         $this->db->query("INSERT INTO kegiatan_dosen_jam_mulai (kode_kegiatan_dosen, kode_jam_mulai) VALUES ($kode_kegiatan_dosen, '$jam_mulai')");
         $this->db->query("INSERT INTO kegiatan_dosen_jam_selesai (kode_kegiatan_dosen, kode_jam_selesai) VALUES ($kode_kegiatan_dosen, '$jam_selesai')");
         $this->db->query("INSERT INTO config_dosen (kode_kegiatan_dosen, kode_config) VALUES ($kode_kegiatan_dosen, $kode_config)");
+    }
+    public function get_nama_kegiatan($kode_kegiatan) {
+        return $this->db->query("SELECT nama_kegiatan FROM kegiatan WHERE kode_kegiatan=$kode_kegiatan");
     }
 }

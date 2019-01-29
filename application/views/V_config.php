@@ -7,32 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url()?>assets/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url()?>assets/css/datatables.min.css" />
-    <style>
-        body {
-            background:#eee;
-        }
-        .main {
-            background:white;
-            margin-top:10px;
-            padding:30px;
-            border-top:5px solid #dc3545;
-            border-bottom:10px solid #dc3545;
-            box-shadow:0px 0px 10px #1234;
-            overflow:hidden;
-        }
-        h3.title {
-            margin:20px 0px;
-        }
-        .top-menu {
-            margin-bottom:15px;
-        }
-        .bottom-menu {
-            float:right;
-        }
-        .not-active {
-            display:none;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url()?>assets/css/style.css" />
 </head>
 <body onload="display_ct()">
     <div class="main mx-auto container">
@@ -61,8 +36,8 @@
                         <td><?=$kegiatan_arr["jam_mulai"]?></td>
                         <td><?=$kegiatan_arr["jam_selesai"]?></td>
                         <td>
-                            <button class="btn btn-sm btn-primary">Edit</button>
-                            <button class="btn btn-sm btn-danger">Hapus</button>
+                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal">Edit</button>
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapus-kegiatan<?=$kegiatan_arr["kode_kegiatan_dosen"]?>">Hapus</button>
                         </td>
                     </tr>
                 <?php } ?>
@@ -73,6 +48,50 @@
             <a class="btn btn-danger" href="<?=base_url()?>dosen/logout">Logout</a>
         </div>
     </div>
+    <!-- Modal Notifikasi -->
+    <?php if ($this->session->flashdata("notification")) { ?>
+        <div class="modal fade" id="notifikasi" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Notifikasi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?=$this->session->flashdata("notification")?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+    <!-- Modal Hapus Kegiatan -->
+    <?php foreach ($kegiatan->result_array() as $kegiatan_arr) { ?>
+        <div class="modal fade" id="hapus-kegiatan<?=$kegiatan_arr["kode_kegiatan_dosen"]?>" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Hapus Kegiatan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Apakah anda yakin akan menghapus kegiatan <?=$kegiatan_arr["nama_kegiatan"]?>?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a class="btn btn-danger" href="#">Hapus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+    <!-- Modal Tambah Kegiatan -->
     <div class="modal fade" id="tambah-kegiatan" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <form action="<?=base_url()?>dosen/insert_kegiatan" method="post">
@@ -170,6 +189,19 @@
     <script src="<?=base_url()?>assets/js/jquery-3.3.1.min.js"></script>
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>assets/js/datatables.min.js"></script>
+    <!-- JS Modal Notifikasi -->
+    <script type="text/javascript">
+        $(window).on('load',function(){
+            $('#notifikasi').modal('show');
+        });
+    </script>
+    <!-- JS Datatables Kegiatan -->
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#kegiatan').DataTable();
+        });
+    </script>
+    <!-- JS Input Jam Mulai & Selesai -->
     <script type="text/javascript">
         $(function() {
             $(".mulai").on("change", function() {
@@ -186,6 +218,7 @@
             });
         });
     </script>
+    <!-- JS Tanggal & Waktu -->
     <script type="text/javascript"> 
         function display_c(){
             var refresh=1000;
