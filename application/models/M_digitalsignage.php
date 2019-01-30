@@ -43,4 +43,7 @@ class M_digitalsignage extends CI_Model {
         $this->db->query("DELETE FROM config_dosen WHERE kode_kegiatan_dosen=$kode_kegiatan_dosen");
         $this->db->query("DELETE FROM kegiatan_dosen WHERE kode_kegiatan_dosen=$kode_kegiatan_dosen");
     }
+    public function get_nama_kegiatan_from_kegiatan_dosen($kode_kegiatan_dosen) {
+        return $this->db->query("SELECT nama_kegiatan FROM kegiatan_dosen INNER JOIN kegiatan USING (kode_kegiatan) WHERE kode_kegiatan_dosen=$kode_kegiatan_dosen");
+    }
 }
