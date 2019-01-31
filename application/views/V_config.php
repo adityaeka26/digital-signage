@@ -193,7 +193,7 @@
     <?php foreach ($kegiatan->result_array() as $kegiatan_arr) { ?>
         <div class="modal fade" id="edit-kegiatan<?=$kegiatan_arr["kode_kegiatan_dosen"]?>" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
-                <form action="<?=base_url()?>dosen/insert_kegiatan" method="post">
+                <form action="<?=base_url()?>dosen/edit_kegiatan" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Edit Kegiatan</h5>
@@ -212,7 +212,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Kegiatan</label>
-                                <select class="form-control" name="nama_kegiatan" required id="nama_kegiatan<?=$kegiatan_arr["kode_kegiatan_dosen"]?>">
+                                <select class="form-control" name="kode_kegiatan" required id="nama_kegiatan<?=$kegiatan_arr["kode_kegiatan_dosen"]?>">
                                     <option value="1">Mengajar</option>
                                     <option value="2">Rapat</option>
                                     <option value="3">Bimbingan Mahasiswa</option>

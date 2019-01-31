@@ -46,4 +46,10 @@ class M_digitalsignage extends CI_Model {
     public function get_nama_kegiatan_from_kegiatan_dosen($kode_kegiatan_dosen) {
         return $this->db->query("SELECT nama_kegiatan FROM kegiatan_dosen INNER JOIN kegiatan USING (kode_kegiatan) WHERE kode_kegiatan_dosen=$kode_kegiatan_dosen");
     }
+    public function edit_kegiatan($kode_kegiatan_dosen, $kode_kegiatan, $kode_hari, $kode_jam_mulai, $kode_jam_selesai) {
+        $this->db->query("UPDATE kegiatan_dosen SET kode_kegiatan=$kode_kegiatan WHERE kode_kegiatan_dosen=$kode_kegiatan_dosen");
+        $this->db->query("UPDATE kegiatan_dosen_hari SET kode_hari='$kode_hari' WHERE kode_kegiatan_dosen=$kode_kegiatan_dosen");
+        $this->db->query("UPDATE kegiatan_dosen_jam_mulai SET kode_jam_mulai='$kode_jam_mulai' WHERE kode_kegiatan_dosen=$kode_kegiatan_dosen");
+        $this->db->query("UPDATE kegiatan_dosen_jam_selesai SET kode_jam_selesai='$kode_jam_selesai' WHERE kode_kegiatan_dosen=$kode_kegiatan_dosen");
+    }
 }

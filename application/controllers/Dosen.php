@@ -42,4 +42,17 @@ class Dosen extends CI_Controller {
         $this->session->set_flashdata("notification", "Kegiatan ".$nama_kegiatan." berhasil dihapus!");
         redirect("page/config/".$kode_config);
     }
+    public function edit_kegiatan() {
+        $kode_config = $this->input->post("kode_config");
+        $kode_kegiatan_dosen = $this->input->post("kode_kegiatan_dosen");
+        $kegiatan = $this->input->post("kode_kegiatan");
+        $hari = $this->input->post("hari");
+        $jam_mulai = $this->input->post("jam_mulai");
+        $jam_selesai = $this->input->post("jam_selesai");
+        $nama_kegiatan = $this->M_digitalsignage->get_nama_kegiatan($kegiatan)->result_array()[0]["nama_kegiatan"];
+
+        $this->M_digitalsignage->edit_kegiatan($kode_kegiatan_dosen, $kegiatan, $hari, $jam_mulai, $jam_selesai);
+        $this->session->set_flashdata("notification", "Kegiatan ".$nama_kegiatan." berhasil diperbarui!");
+        redirect("page/config/".$kode_config);
+    }
 }
