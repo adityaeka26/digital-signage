@@ -202,11 +202,11 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group">
+                            <div class="form-group d-none">
                                 <label>Kode Config</label>
                                 <input type="text" class="form-control" name="kode_config" readonly value="<?=$kode_config?>">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group d-none">
                                 <label>Kode Kegiatan Dosen</label>
                                 <input type="text" class="form-control" name="kode_kegiatan_dosen" readonly value="<?=$kegiatan_arr["kode_kegiatan_dosen"]?>">
                             </div>

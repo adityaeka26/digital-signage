@@ -16,7 +16,7 @@
         </div>
         <h3 class="title">Daftar Config</h3>
         <div class="top-menu">
-            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#tambah-kegiatan">Tambah Config</button>
+            <button type="button" class="btn btn-sm btn-danger">Tambah Config</button>
         </div>  
         <table class="table" id="config">
             <thead>
