@@ -12,7 +12,7 @@ class M_digitalsignage extends CI_Model {
         return $this->db->query("SELECT nama_config FROM config WHERE kode_config=$kode_config");
     }
     public function get_kegiatan($kode_config) {
-        return $this->db->query("SELECT kode_kegiatan_dosen, nama_kegiatan, nama_hari, jam_mulai, jam_selesai
+        return $this->db->query("SELECT kode_kegiatan_dosen, nama_kegiatan, nama_hari, jam_mulai, jam_selesai, kode_kegiatan, kode_hari, kode_jam_mulai, kode_jam_selesai
             FROM config_dosen 
             INNER JOIN kegiatan_dosen USING (kode_kegiatan_dosen)
             INNER JOIN kegiatan USING (kode_kegiatan)
