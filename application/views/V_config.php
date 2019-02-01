@@ -284,7 +284,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <input type="submit" class="btn btn-danger" value="Tambah">
+                            <input type="submit" class="btn btn-danger" value="Edit">
                         </div>
                     </div>
                 </form>
@@ -384,3 +384,4 @@
     </script>
     <!-- End -->
 </body>
+</html>
