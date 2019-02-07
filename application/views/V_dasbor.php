@@ -17,7 +17,7 @@
         </div>
         <h3 class="title">Daftar Config</h3>
         <div class="top-menu">
-            <button type="button" class="btn btn-sm btn-danger">Tambah Config</button>
+            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#tambah-config">Tambah Config</button>
         </div>  
         <table class="table" id="config">
             <thead>
@@ -42,25 +42,40 @@
             <a class="btn btn-danger" href="<?=base_url()?>dosen/logout">Logout</a>
         </div>
     </div>
-    <div class="modal fade" id="tambah-kegiatan" tabindex="-1" role="dialog">
+    <!-- Modal Tambah Config -->
+    <div class="modal fade" id="tambah-config" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+            <form action="<?=base_url()?>dosen/insert_config" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tambah Config</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Nama Config</label>
+                            <input type="text" class="form-control" name="nama_config">
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal Mulai</label>
+                            <input type="date" class="form-control" name="tanggal_mulai"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal Selesai</label>
+                            <input type="date" class="form-control" name="tanggal_selesai"/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger">Save changes</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
+    <!-- End -->
     <!-- Modal Notifikasi -->
     <?php if ($this->session->flashdata("notification")) { ?>
         <div class="modal fade" id="notifikasi" tabindex="-1" role="dialog">
@@ -82,6 +97,7 @@
             </div>
         </div>
     <?php } ?>
+    <!-- End -->
     <script src="<?=base_url()?>assets/js/jquery-3.3.1.min.js"></script>
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>assets/js/datatables.min.js"></script>
@@ -91,12 +107,14 @@
             $('#notifikasi').modal('show');
         });
     </script>
+    <!-- End -->
     <!-- JS Datatables Kegiatan -->
     <script type="text/javascript">
         $(document).ready( function () {
             $('#config').DataTable();
         });
     </script>
+    <!-- End -->
     <!-- JS Tanggal & Waktu -->
     <script type="text/javascript"> 
         function display_c(){
@@ -133,5 +151,6 @@
             tt = display_c();
         }
     </script>
+    <!-- End -->
 </body>
 </html>
