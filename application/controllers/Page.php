@@ -41,4 +41,8 @@ class Page extends CI_Controller {
             $this->load->view("V_config", $data);
         }
     }
+    public function display() {
+        $data["title"] = "Display"
+        $this->load->view("V_display", $data);
+    }
 }
