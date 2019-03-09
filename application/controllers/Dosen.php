@@ -25,25 +25,23 @@ class Dosen extends CI_Controller {
     }
     public function insert_kegiatan() {
         $kode_dosen = $this->session->userdata("username");
-        $kode_config = $this->input->post("kode_config");
         $kegiatan = $this->input->post("nama_kegiatan");
         $hari = $this->input->post("hari");
         $jam_mulai = $this->input->post("jam_mulai");
         $jam_selesai = $this->input->post("jam_selesai");
         $nama_kegiatan = $this->M_digitalsignage->get_nama_kegiatan($kegiatan)->result_array()[0]["nama_kegiatan"];
 
-        $this->M_digitalsignage->insert_kegiatan($kode_dosen, $kode_config, $kegiatan, $hari, $jam_mulai, $jam_selesai);
+        $this->M_digitalsignage->insert_kegiatan($kode_dosen, $kegiatan, $hari, $jam_mulai, $jam_selesai);
         $this->session->set_flashdata("notification", "Kegiatan ".$nama_kegiatan." berhasil ditambahkan!");
-        redirect("page/config/".$kode_config);
+        redirect("page/dasbor");
     }
-    public function delete_kegiatan($kode_config, $kode_kegiatan_dosen) {
+    public function delete_kegiatan($kode_kegiatan_dosen) {
         $nama_kegiatan = $this->M_digitalsignage->get_nama_kegiatan_from_kegiatan_dosen($kode_kegiatan_dosen)->result_array()[0]["nama_kegiatan"];
         $this->M_digitalsignage->delete_kegiatan($kode_kegiatan_dosen);        
         $this->session->set_flashdata("notification", "Kegiatan ".$nama_kegiatan." berhasil dihapus!");
-        redirect("page/config/".$kode_config);
+        redirect("page/dasbor");
     }
     public function edit_kegiatan() {
-        $kode_config = $this->input->post("kode_config");
         $kode_kegiatan_dosen = $this->input->post("kode_kegiatan_dosen");
         $kegiatan = $this->input->post("kode_kegiatan");
         $hari = $this->input->post("hari");
@@ -53,6 +51,6 @@ class Dosen extends CI_Controller {
 
         $this->M_digitalsignage->edit_kegiatan($kode_kegiatan_dosen, $kegiatan, $hari, $jam_mulai, $jam_selesai);
         $this->session->set_flashdata("notification", "Kegiatan ".$nama_kegiatan." berhasil diperbarui!");
-        redirect("page/config/".$kode_config);
+        redirect("page/dasbor");
     }
 }
