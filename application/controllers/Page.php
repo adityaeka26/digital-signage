@@ -52,4 +52,7 @@ class Page extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($data);
     }
+    public function display2() {
+        $this->load->view("V_display2");
+    }
 }
