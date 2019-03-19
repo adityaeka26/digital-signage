@@ -3,12 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Display</title>
+    <title><?=$dosen["kode_dosen"]?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="<?=base_url()?>assets/img/favicon2.png" title="favicon">
     <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url()?>assets/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url()?>assets/css/datatables.min.css" />
     <style>
+        title {
+            text-transform: uppercase;
+        }
         body {
             text-align:center;
             font-family: Calibri;
@@ -27,7 +30,7 @@
             background: white;
         }
         .sidebar {
-            background: #f9f9f9;
+            background: #eff4ff;
             /* height: 100%; */
             padding: 20px 60px;
             text-align: center;
