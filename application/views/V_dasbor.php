@@ -22,6 +22,7 @@
         <table class="table" id="kegiatan">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>Nama Kegiatan</th>
                     <th>Hari</th>
                     <th>Jam Mulai</th>
@@ -30,8 +31,10 @@
                 </tr>
             </thead>
             <tbody>
+                <?php $i = 1?>
                 <?php foreach ($kegiatan->result_array() as $kegiatan_arr) { ?>
                     <tr>
+                        <td><?=$i++?></td>
                         <td><?=$kegiatan_arr["nama_kegiatan"]?></td>
                         <td><?=$kegiatan_arr["nama_hari"]?></td>
                         <td><?=$kegiatan_arr["jam_mulai"]?></td>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2019 at 04:27 AM
+-- Generation Time: Mar 19, 2019 at 06:59 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `digitalsignage2`
+-- Database: `digitalsignage`
 --
 
 -- --------------------------------------------------------
@@ -32,18 +32,19 @@ CREATE TABLE `dosen` (
   `kode_dosen` varchar(5) NOT NULL,
   `foto_dosen` varchar(50) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL,
-  `kode_ruangan` varchar(25) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `kode_ruangan` varchar(25) NOT NULL,
+  `nama_dosen` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `dosen`
 --
 
-INSERT INTO `dosen` (`kode_dosen`, `foto_dosen`, `username`, `password`, `kode_ruangan`) VALUES
-('adr', 'foto_adr.jpg', 'adr', 'adr', 'e1'),
-('aeb', 'foto_aeb.jpg', 'aeb', 'aeb', 'e1'),
-('ryj', 'foto_ryj.jpg', 'ryj', 'ryj', 'e1');
+INSERT INTO `dosen` (`kode_dosen`, `foto_dosen`, `username`, `password`, `kode_ruangan`, `nama_dosen`) VALUES
+('adr', 'foto_adr.jpg', 'adr', 'de7c54d99428fb909bef013577070f0d', 'e1', 'Andrian Rakhmatsyah'),
+('aeb', 'foto_aeb.jpg', 'aeb', 'f5b443d5efd16a1c2902e388f0f1b9eb', 'e1', 'Aditya Eka Bagaskara'),
+('ryj', 'foto_ryj.jpg', 'ryj', 'd59a9e3439e998263636c14168ae18b0', 'e1', 'Rahmat Yasirandi');
 
 -- --------------------------------------------------------
 
@@ -197,7 +198,14 @@ INSERT INTO `kegiatan_dosen` (`kode_kegiatan_dosen`, `kode_dosen`, `kode_kegiata
 (13, 'ryj', 4),
 (14, 'ryj', 1),
 (15, 'ryj', 2),
-(16, 'aeb', 4);
+(16, 'aeb', 4),
+(17, 'ryj', 2),
+(18, 'ryj', 1),
+(19, 'ryj', 3),
+(20, 'ryj', 4),
+(21, 'ryj', 4),
+(22, 'ryj', 3),
+(23, 'ryj', 1);
 
 -- --------------------------------------------------------
 
@@ -230,7 +238,14 @@ INSERT INTO `kegiatan_dosen_hari` (`kode_kegiatan_dosen_hari`, `kode_kegiatan_do
 (13, 13, 'h5'),
 (14, 14, 'h4'),
 (15, 15, 'h4'),
-(16, 16, 'h4');
+(16, 16, 'h4'),
+(17, 17, 'h2'),
+(18, 18, 'h2'),
+(19, 19, 'h2'),
+(20, 20, 'h2'),
+(21, 21, 'h2'),
+(22, 22, 'h2'),
+(23, 23, 'h2');
 
 -- --------------------------------------------------------
 
@@ -263,7 +278,14 @@ INSERT INTO `kegiatan_dosen_jam_mulai` (`kode_kegiatan_dosen_jam_mulai`, `kode_k
 (13, 13, 'jm13'),
 (14, 14, 'jm16'),
 (15, 15, 'jm04'),
-(16, 16, 'jm05');
+(16, 16, 'jm05'),
+(17, 17, 'jm06'),
+(18, 18, 'jm16'),
+(19, 19, 'jm01'),
+(20, 20, 'jm06'),
+(21, 21, 'jm16'),
+(22, 22, 'jm19'),
+(23, 23, 'jm10');
 
 -- --------------------------------------------------------
 
@@ -296,7 +318,14 @@ INSERT INTO `kegiatan_dosen_jam_selesai` (`kode_kegiatan_dosen_jam_selesai`, `ko
 (13, 13, 'js19'),
 (14, 14, 'js21'),
 (15, 15, 'js10'),
-(16, 16, 'js08');
+(16, 16, 'js08'),
+(17, 17, 'js16'),
+(18, 18, 'js17'),
+(19, 19, 'js07'),
+(20, 20, 'js13'),
+(21, 21, 'js19'),
+(22, 22, 'js21'),
+(23, 23, 'js15');
 
 -- --------------------------------------------------------
 
@@ -405,25 +434,25 @@ ALTER TABLE `kegiatan`
 -- AUTO_INCREMENT for table `kegiatan_dosen`
 --
 ALTER TABLE `kegiatan_dosen`
-  MODIFY `kode_kegiatan_dosen` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `kode_kegiatan_dosen` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `kegiatan_dosen_hari`
 --
 ALTER TABLE `kegiatan_dosen_hari`
-  MODIFY `kode_kegiatan_dosen_hari` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `kode_kegiatan_dosen_hari` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `kegiatan_dosen_jam_mulai`
 --
 ALTER TABLE `kegiatan_dosen_jam_mulai`
-  MODIFY `kode_kegiatan_dosen_jam_mulai` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `kode_kegiatan_dosen_jam_mulai` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `kegiatan_dosen_jam_selesai`
 --
 ALTER TABLE `kegiatan_dosen_jam_selesai`
-  MODIFY `kode_kegiatan_dosen_jam_selesai` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `kode_kegiatan_dosen_jam_selesai` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables

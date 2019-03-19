@@ -52,7 +52,8 @@ class Page extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($data);
     }
-    public function display2() {
-        $this->load->view("V_display2");
+    public function display2($kode_dosen) {
+        $data["dosen"] = $this->M_digitalsignage->get_dosen_by_kodedosen($kode_dosen)->result_array()[0];
+        $this->load->view("V_display2", $data);
     }
 }

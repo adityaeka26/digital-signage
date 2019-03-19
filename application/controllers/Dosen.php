@@ -8,8 +8,9 @@ class Dosen extends CI_Controller {
     public function login() {
         $username = $this->input->post("username");
         $password = $this->input->post("password");
+        $passwordx = md5($password);
 
-        $result = $this->M_digitalsignage->login($username, $password)->row_array();
+        $result = $this->M_digitalsignage->login($username, $passwordx)->row_array();
 
         if ($result > 0) {
             $this->session->set_userdata("username", $username);

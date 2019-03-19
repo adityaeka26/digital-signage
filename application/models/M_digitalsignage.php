@@ -16,6 +16,7 @@ class M_digitalsignage extends CI_Model {
             INNER JOIN jam_mulai USING (kode_jam_mulai)
             INNER JOIN jam_selesai USING (kode_jam_selesai)
             WHERE kode_dosen='$kode_dosen'
+            ORDER BY kode_hari, kode_jam_mulai, kode_jam_selesai
         ");
     }
     public function insert_kegiatan($kode_dosen, $kegiatan, $hari, $jam_mulai, $jam_selesai) {
@@ -45,5 +46,8 @@ class M_digitalsignage extends CI_Model {
     }
     public function get_dosen($kode_ruangan) {
         return $this->db->query("SELECT * FROM dosen WHERE kode_ruangan='$kode_ruangan'");
+    }
+    public function get_dosen_by_kodedosen($kode_dosen) {
+        return $this->db->query("SELECT * FROM dosen WHERE kode_dosen='$kode_dosen'");
     }
 }
