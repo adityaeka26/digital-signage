@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title><?=$dosen["nama_dosen"]?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="<?=base_url()?>assets/img/favicon2.png" title="favicon">
     <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url()?>assets/css/bootstrap.min.css" />
@@ -175,9 +175,6 @@
                 })
             }, 1000)
         })
-        var title = <?=$dosen["kode_dosen"]?>
-        var titlex = title.toUpperCase();
-        document.getElementsByTagName("title")
     </script>
     <!-- End -->
 </body>
